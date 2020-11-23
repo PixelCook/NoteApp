@@ -1,17 +1,40 @@
 .app{
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background: cornsilk;
-  z-index: ;
+  height: 75vh;
+  width: 75vh;
+  background: white;
+  align-items: center;
 }
 .bigForm{
- height: 100px;
- width: 200px;
  text-align: start;
  outline: none;
  word-wrap: break-word;
- 
+}
+h1{
+  padding: 1rem;
+  align-self: center;
+  font-family: 'Raleway', sans-serif;
+  color:black;
+
+}
+
+.input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 200px;
+}
+.todo {
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+  width: 60vh;
 }
 body {
   width: 100%;
