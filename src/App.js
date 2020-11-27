@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import NoteModal from "./components/modal";
+import useModal from "./components/usemodal";
 
 function TodoForm({ addTodo }) {
   const [value, setValue] = React.useState("");
@@ -28,14 +30,15 @@ function TodoForm({ addTodo }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button className="btn btn-outline-info btn-sm">noted</button>
+      <button className="btn btn-outline-info btn-sm">✓</button>
     </form>
   );
 }
-function Todo({ todo, index, removeTodo }) {
+function Todo({ todo, index, removeTodo, editNote }) {
+  const { isShowing, toggle } = useModal();
   return (
     <div className="col todo">
-      <span className="displayspan">
+      <span className="displayspan" onClick={toggle}>
         <h3 className="title">{todo.title}</h3>
         {todo.text}
         <i className="date">{todo.date}</i>
@@ -48,6 +51,13 @@ function Todo({ todo, index, removeTodo }) {
           x
         </button>
       </div>
+      <NoteModal
+        index={index}
+        todo={todo}
+        isShowing={isShowing}
+        hide={toggle}
+        editNote={editNote}
+      />
     </div>
   );
 }
@@ -63,14 +73,23 @@ function App() {
   const removeTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
+    window.confirm("Are you sure you want to delete me?");
     setTodos(newTodos);
   };
 
   const addTodo = (title, text, date) => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, {}];
+    newTodos.slice(-1)[0].text = text;
     newTodos.slice(-1)[0].date = date;
     newTodos.slice(-1)[0].title = title;
     setTodos(newTodos);
+  };
+
+  const editNote = (title, text, index) => {
+    const newTodos = [...todos];
+    newTodos[index].title = title;
+    newTodos[index].text = text;
+    newTodos[index].date = "EDITED ON " + new Date().toLocaleString();
   };
 
   return (
@@ -79,7 +98,13 @@ function App() {
       <TodoForm addTodo={addTodo} />
       <div className="row bigForm">
         {todos.map((todo, index) => (
-          <Todo key={index} index={index} todo={todo} removeTodo={removeTodo} />
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            removeTodo={removeTodo}
+            editNote={editNote}
+          />
         ))}
       </div>
     </div>

@@ -60,6 +60,28 @@ body {
   font-family: 'Raleway-SemiBold';
   
 }
+
+.noteModal{
+  display: flex;
+  margin-left: 30rem;
+  margin-top: 10rem;
+  flex-direction: column;
+  height: 40vh;
+  width: 40vh;
+  background: rgba(112, 111, 111, 0.253);
+  align-items: center;
+  overflow: scroll;
+  font-family: 'Raleway-SemiBold';
+
+}
+
+.modalForm {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
 .displayspan{
   display: flex;
   flex-direction: column;
