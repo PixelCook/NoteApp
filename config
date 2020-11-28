@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/israeltechchallenge/react-project-1-PixelCook.git
+	fetch = +refs/*:refs/*
+	mirror = true
+	pushurl = https://github.com/PixelCook/NoteApp.git
